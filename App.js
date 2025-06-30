@@ -29,13 +29,13 @@ const RestauCards = (props) => {
             <img 
                 className="restau-logo"
                 alt="restau-logo" 
-                src={props.imageLogo}
+                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/${props.cloudinaryImageId}`}
             />
-            <h3>{props.RestauName}</h3>
-            <h4>{props.cuisine}</h4>
-            <h4>{props.rating}</h4>
+            <h3>{props.name}</h3>
+            <h4>{props.cuisines}</h4>
+            <h4>{props.avgRating}</h4>
             <h4>Cost for TWO : {props.costForTwo}</h4>
-             <h4>{props.deliveryIn}</h4>
+             <h4>{props.slaString}</h4>
         </div>    
     )
 }
@@ -10127,14 +10127,18 @@ const Body = () => {
                 <button className="search-button">Search</button>
             </div>
             <div className="restau-cards-container">
-                <RestauCards 
-                    RestauName={restrauArr[0].info.name} //restrauArr.card.card.info.name
-                    cuisine={restrauArr[0].info.cuisines.join(', ')} 
-                    rating={restrauArr[0].info.avgRating}
-                    deliveryIn={restrauArr[0].info.sla.slaString}
-                    costForTwo={restrauArr[0].info.costForTwo / 100}
-                    imageLogo={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/${restrauArr[0].info.cloudinaryImageId}`}
-                />
+                {
+                    restrauArr.map(restrau => 
+                        <RestauCards 
+                            name={restrau.info.name}
+                            cuisines={restrau.info.cuisines.join(', ')} 
+                            avgRating={restrau.info.avgRating}
+                            slaString={restrau.info.sla.slaString}
+                            costForTwo={restrau.info.costForTwo / 100}
+                            cloudinaryImageId={restrau.info.cloudinaryImageId}
+                        />
+                    )
+                }
             </div>
         </div>
     )
