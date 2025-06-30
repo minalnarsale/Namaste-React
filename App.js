@@ -29,12 +29,12 @@ const RestauCards = (props) => {
             <img 
                 className="restau-logo"
                 alt="restau-logo" 
-                src="https://cdn.britannica.com/35/225835-050-A5CC289A/Indian-one-pot-meal-for-party.jpg"
+                src={props.imageLogo}
             />
             <h3>{props.RestauName}</h3>
             <h4>{props.cuisine}</h4>
-            <h4>4.4 stars</h4>
-            <h4>38 mins</h4>
+            <h4>{props.rating}</h4>
+            <h4>{props.deliveryIn}</h4>
         </div>    
     )
 }
@@ -47,8 +47,20 @@ const Body = () => {
                 <button className="search-button">Search</button>
             </div>
             <div className="restau-cards-container">
-                <RestauCards RestauName='Meghna Foods' cuisine='Biryani, North Indian, Asian'/>
-                <RestauCards RestauName='KFC' cuisine='Burgers, Fast Food'/>
+                <RestauCards 
+                    RestauName='Meghna Foods' 
+                    cuisine='Biryani, North Indian, Asian' 
+                    rating='4.4 stars' 
+                    deliveryIn='38 mins'
+                    imageLogo='https://cdn.britannica.com/35/225835-050-A5CC289A/Indian-one-pot-meal-for-party.jpg'
+                />
+                <RestauCards 
+                    RestauName='KFC' 
+                    cuisine='Burgers, Fast Food' 
+                    rating='4.8 stars'
+                    deliveryIn='28 mins'
+                    imageLogo='https://pngimg.com/uploads/kfc/kfc_PNG41.png'
+                />
             </div>
         </div>
     )
