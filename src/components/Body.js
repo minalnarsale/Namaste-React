@@ -1,17 +1,29 @@
 import RestauCards from "./RestauCards";
 import restaurants from "../../mockData.json";
+import { useState } from "react";
 
-const restrauArr = restaurants.cards
+const restrauInitializedArr = restaurants.cards
   .map((obj) => obj.card)
   .map((obj) => obj.card);
 
 const Body = () => {
+  let [restrauArr, setRestrauArr] = useState(restrauInitializedArr); //local state variable
+
   return (
     <div className="body">
-      <div className="search-bar-container">
-        <input className="search-bar" type="text" />
-        <button className="search-button">Search</button>
-      </div>
+      <button
+        className="filter-btn"
+        onClick={() => {
+          console.log("button clicked");
+          restrauArr = restrauArr.filter((res) => {
+            return res.info.avgRating >= 4;
+          });
+          setRestrauArr(restrauArr);
+          console.log("restrauArr : ", restrauArr);
+        }}
+      >
+        Top Rated Restaurants
+      </button>
       <div className="restau-cards-container">
         {restrauArr.map((restrau) => (
           <RestauCards
