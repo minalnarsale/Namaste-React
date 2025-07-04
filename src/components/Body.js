@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import RestauCards from "./RestauCards";
 import restaurants from "../../mockData.json";
-import { useEffect, useState } from "react";
+import ShimmerUI from "./ShimmerUI";
 
 const restrauInitializedArr = restaurants.cards
   .map((obj) => obj.card)
@@ -28,8 +29,9 @@ const Body = () => {
     setRestrauArr(restaurants);
   };
 
+  //conditional rendering
   if (restrauArr.length === 0) {
-    return <h1>Loading.....</h1>;
+    return <ShimmerUI />;
   }
 
   return (

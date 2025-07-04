@@ -66,3 +66,21 @@
   border: 1px solid black;
   cursor: pointer;
 }
+
+.shimmerUI-card {
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  background-color: #f0f0f0;
+}
+
+.shimmerUI-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login-button {
+  background-color: #f0f0f0;
+  padding: 0, 30px;
+  cursor: pointer;
+}
