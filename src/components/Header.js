@@ -8,6 +8,9 @@ const Header = () => {
       <div className="logo-container">
         <img className="logo" src={LOGO_URL} />
       </div>
+      <div className="app-name">
+        <h1>Namaste Burger</h1>
+      </div>
       <div className="nav-items">
         <ul>
           <li>Home</li>
@@ -17,7 +20,7 @@ const Header = () => {
           <button
             className="login-button"
             onClick={() => {
-              setBtnName("Logout");
+              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
           >
             {btnName}

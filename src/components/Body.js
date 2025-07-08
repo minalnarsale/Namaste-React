@@ -8,7 +8,12 @@ const restrauInitializedArr = restaurants.cards
   .map((obj) => obj.card);
 
 const Body = () => {
-  let [restrauArr, setRestrauArr] = useState([]); //local state variable
+  //local state variable - super powerful variables
+  let [restrauArr, setRestrauArr] = useState([]);
+  let [filteredRestrauArr, setFilteredRestrauArr] = useState([]);
+  let [searchText, setSearchText] = useState("");
+
+  console.log("searchText : ", searchText);
 
   useEffect(() => {
     console.log("useEffect called!");
@@ -27,6 +32,7 @@ const Body = () => {
         .map((obj) => obj.card);
     console.log("restaurants : ", restaurants);
     setRestrauArr(restaurants);
+    setFilteredRestrauArr(restaurants);
   };
 
   //conditional rendering
@@ -36,21 +42,50 @@ const Body = () => {
 
   return (
     <div className="body">
-      <button
-        className="filter-btn"
-        onClick={() => {
-          console.log("button clicked");
-          restrauArr = restrauArr.filter((res) => {
-            return res.info.avgRating >= 4;
-          });
-          setRestrauArr(restrauArr);
-          console.log("restrauArr : ", restrauArr);
-        }}
-      >
-        Top Rated Restaurants
-      </button>
+      <div className="search-restraws">
+        <div className="search-bar-container">
+          <input
+            type="text"
+            className="search-input"
+            value={searchText} //binding input to state variable
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              //get search text
+              //filter the restaurants as per search text and update the UI
+              // console.log("searchText : ", searchText);
+              const filteredRestraws = restrauArr.filter((restrwa) => {
+                restrwa.info.name.includes(searchText);
+              });
+              setFilteredRestrauArr(filteredRestraws); //we are updating the restrauArr thus the filter will not work next time because we are updating it with filtered data
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            console.log("button clicked");
+            restrauArr = restrauArr.filter((res) => {
+              return res.info.avgRating >= 4;
+            });
+            setRestrauArr(restrauArr);
+            console.log("restrauArr : ", restrauArr);
+          }}
+        >
+          Top Rated Restaurants
+        </button>
+        <button className="quick-delivery-filter-btn">
+          Top Quick delivery
+        </button>
+      </div>
       <div className="restau-cards-container">
-        {restrauArr.map((restrau) => (
+        {filteredRestrauArr.map((restrau) => (
           <RestauCards
             key={restrau.info.id}
             name={restrau.info.name}

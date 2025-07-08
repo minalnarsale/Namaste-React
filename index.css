@@ -8,6 +8,11 @@
   width: 150;
 }
 
+.app-name {
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
 .nav-items > ul {
   display: flex;
   list-style-type: none;
@@ -33,7 +38,7 @@
   cursor: pointer;
 }
 
-.search-bar-container {
+.search-restraws {
   border: 1px solid black;
   padding: 10px;
 }
@@ -50,9 +55,10 @@
   height: 25px;
 }
 
-.search-button {
+.search-btn {
   width: 100px;
   height: 25px;
+  margin-left: 10px;
 }
 
 .restau-logo {
@@ -60,11 +66,15 @@
   height: 45%;
 }
 
-.filter-btn {
-  margin: 15px;
-  margin-left: 650px;
+.filter-btn,
+.quick-delivery-filter-btn {
+  margin-top: 10px;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.quick-delivery-filter-btn {
+  margin-left: 10px;
 }
 
 .shimmerUI-card {
@@ -81,6 +91,6 @@
 
 .login-button {
   background-color: #f0f0f0;
-  padding: 0, 30px;
   cursor: pointer;
+  width: 60px;
 }
